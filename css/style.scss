@@ -24,19 +24,14 @@ $transition-fast: 0.3s ease;
 
 
 
-.header__container { 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 3rem;
-
-
-
-    justify-content: space-between;
-    align-items: center;
-    padding: 2rem 3rem;
-    transform: translate(-17px, 98px);
+.header__container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 3rem;
+  transform: translate(-17px, 98px);
 }
+
 
 
 
@@ -53,22 +48,19 @@ $transition-fast: 0.3s ease;
 
 
 
-.nav__list { 
-    display: flex;
-    gap: 3rem;
-    list-style: none;
-    font-family: 'Josefin Sans', sans-serif;
-    transform: translate(-48px, -35px);
-    font-weight: normal;
-    transform: translate(-448px, 8px);
-    font-weight: 800;
-    letter-spacing: 1.5px;
-    transform: translate(-221px, -43px);
-    font-family: 'Josefin Sans', sans-serif;
-    color: $color-primary;
-    text-decoration: none;
-    font-size: 1.3rem;
+.nav__list {
+  display: flex;
+  gap: 3rem;
+  list-style: none;
+  font-family: $font-main;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  transform: translate(-221px, -43px);
+  color: $color-primary;
+  text-decoration: none;
+  font-size: 1.3rem;
 }
+
 
 .nav__list a {
     color: $color-primary;
@@ -355,98 +347,115 @@ background-color: $color-primary;
 
 
 /* ========= FOOTER ========= */
-.footer { 
-    background-color: $color-dark;
-    color: $color-primary;
-    padding: 2rem 3rem;
-    width: 96.9%;
-    height: 13.8rem;
-    transform: translate(-8px, -82px);
-}
+/* ========= FOOTER ========= */
+.footer {
+  background-color: $color-dark;
+  color: $color-primary;
+  padding: 2rem 3rem;
+  width: 100%;
+  height: auto;
 
-.footer__container { 
+  &__container {
     display: flex;
     justify-content: space-between;
     font-size: xx-large;
-}
+  }
 
+  &__left {
+    letter-spacing: 4px;
 
-.footer__nav {     
+    h3 {
+      letter-spacing: 3px;
+      font-size: xxx-large;
+    }
+  }
+
+  &__nav {
     list-style: none;
     display: flex;
     gap: 3.2rem;
     padding: 10px;
-    transform: translate(234px, -17px);
     letter-spacing: 4px;
     font-size: x-large;
-}
 
+    a {
+      position: relative;
+      color: $color-primary;
+      text-decoration: none;
+      font-family: $font-main;
+      transition: color $transition-fast;
 
-.footer__nav a { 
-  position: relative;
-  color: $color-primary;
-  text-decoration: none;
-  font-family: 'Josefin Sans', sans-serif;
-  transition: color $transition-fast;
+      &::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        width: 0%;
+        height: 2px;
+        background-color: $color-primary;
+        transition: width $transition-fast;
+      }
 
-}
-.footer__nav a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -6px; /* distancia de la línea respecto al texto */
-  width: 0%;
-  height: 2px;
-  background-color: $color-primary;
-  transition: width $transition-fast;
-}
-.footer__nav a:hover::after {
-  width: 100%;
-}
+      &:hover::after {
+        width: 100%;
+      }
+    }
+  }
 
-
-
-
-
-
-
-
-.footer__container .footer__left { 
-    transform: translate(2px, -1px);
-    letter-spacing: 4px;    
-}
-
-.footer__left h3 { 
-    transform: translate(239px, -13px);
-    letter-spacing: 3px;
-    font-size: xxx-large;
-}
-
-.footer__socials { 
+  &__socials {
     display: flex;
     gap: 1.5rem;
-    font-size: 1.5rem;
-    transform: translate(-30px, 62px);
+    transform: translate(18px, 69px);
+
+    a img {
+      width: 35px;
+      height: 35px;
+      filter: brightness(0) invert(1);
+      transition: transform 0.3s ease, opacity 0.3s ease;
+
+      &:hover {
+        transform: scale(1.1);
+        opacity: 0.8;
+      }
+    }
+  }
+
+  &__copy {
+    text-align: center;
+    margin-top: 1rem;
+    transform: translate(-129px, 92px);
+  }
 }
 
 
-.footer__socials a {
-    color: $color-primary;
-    text-decoration: none;
-    transition: opacity $transition-fast;
+
+
+/* CORRECIONES DE BORDES  */
+
+
+
+/* Corrección del desbordamiento horizontal */
+html, body {
+  width: 100%;
+  overflow-x: hidden; /* oculta el scroll lateral */
+  margin: 0;
+  padding: 0;
 }
-.footer__socials a:hover {
-    opacity: 0.7;
+
+.header {
+  width: 100%; /* elimina el ancho fijo */
+  max-width: 100vw; /* asegura que nunca supere el ancho de la ventana */
+  transform: none; /* opcional, evita desplazamiento lateral */
 }
-.footer__copy { 
-    transform: translate(-194px, 78px);
-}
+
+
+
 
 
 
 /* ========= MEDIA QUERIES ========= */
 
-/* 💻 Tablets grandes o pantallas medianas */
+/* Tablets grandes o pantallas medianas */
 @media (max-width: 1200px) {
 
   .header {
@@ -558,7 +567,7 @@ background-color: $color-primary;
   
 }
 
-/* 📱 Móviles (pantallas pequeñas) */
+/* Móviles (pantallas pequeñas) */
 @media (max-width: 768px) {
 
   .header__container {
